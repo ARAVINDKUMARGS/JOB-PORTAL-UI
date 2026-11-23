@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpireJobs | Modern Job Portal - Find Your Dream Job</title>
+  <meta name="description" content="Discover your next career opportunity with SpireJobs. Filter by role, location, job type and experience level. Apply now or bookmark jobs for later.">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= TOP NOTIFICATION BAR ================= -->
+  <div class="top-banner">
+    <div class="container top-banner-content">
+      <span class="banner-badge"><i class="fa-solid fa-sparkles"></i> SpireX Foundation</span>
+      <p class="banner-text">Internship Task 15 &bull; Empowering tech professionals &amp; graduates with verified job openings.</p>
+      <span class="banner-deadline"><i class="fa-regular fa-clock"></i> Updated Daily</span>
+    </div>
+  </div>
+
+  <!-- ================= HEADER & NAVIGATION ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="SpireJobs Homepage">
+        <div class="logo-icon">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <span class="logo-text">Spire<span class="logo-accent">Jobs</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <a href="#jobsingsSection" class="nav-link active">Find Jobs</a>
+        <a href="#categoriesSection" class="nav-link">Categories</a>
+        <a href="#howItWorks" class="nav-link">How It Works</a>
+        <button type="button" class="nav-link saved-jobs-btn" id="navSavedJobsBtn" title="View Saved Jobs">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Saved Jobs</span>
+          <span class="saved-counter" id="savedCountBadge">0</span>
+        </button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button type="button" class="btn btn-secondary post-job-btn" id="postJobBtn">
+          <i class="fa-solid fa-plus"></i> Post a Job
+        </button>
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span class="pill-dot"></span> Over 1,500+ New Openings This Week
+        </div>
+        <h1 class="hero-title">
+          Find Your <span class="gradient-text">Dream Job</span> &amp; Elevate Your Career
+        </h1>
+        <p class="hero-subtitle">
+          Connect with vetted tech startups, global enterprises, and top creative agencies. Discover remote and on-site opportunities tailored to your skills.
+        </p>
+
+        <!-- Hero Integrated Search Box -->
+        <div class="hero-search-wrapper">
+          <form class="hero-search-form" id="heroSearchForm" role="search" onsubmit="return false;">
+            <!-- Title / Keyword Input -->
+            <div class="search-input-group">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input 
+                type="text" 
+                id="heroTitleInput" 
+                placeholder="Job title, company, or keywords..." 
+                aria-label="Job title, company, or keywords"
+                autocomplete="off"
+              >
+            </div>
+
+            <!-- Divider -->
+            <div class="search-divider"></div>
+
+            <!-- Location Input -->
+            <div class="search-input-group">
+              <i class="fa-solid fa-location-dot search-icon"></i>
+              <select id="heroLocationSelect" aria-label="Select Job Location">
+                <option value="">All Locations</option>
+                <option value="Remote">Remote Only</option>
+                <option value="San Francisco, CA">San Francisco, CA</option>
+                <option value="New York, NY">New York, NY</option>
+                <option value="Austin, TX">Austin, TX</option>
+                <option value="Seattle, WA">Seattle, WA</option>
+                <option value="London, UK">London, UK</option>
+                <option value="Berlin, Germany">Berlin, Germany</option>
+                <option value="Bangalore, India">Bangalore, India</option>
+              </select>
+            </div>
+
+            <!-- Divider -->
+            <div class="search-divider"></div>
+
+            <!-- Category Select -->
+            <div class="search-input-group">
+              <i class="fa-solid fa-layer-group search-icon"></i>
+              <select id="heroCategorySelect" aria-label="Select Job Category">
+                <option value="">All Categories</option>
+                <option value="Engineering">Engineering &amp; Dev</option>
+                <option value="Design">UI/UX &amp; Creative</option>
+                <option value="Product">Product Management</option>
+                <option value="Marketing">Growth &amp; Marketing</option>
+                <option value="Data & AI">Data &amp; Artificial Intelligence</option>
+                <option value="Finance">Finance &amp; Operations</option>
+              </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary search-submit-btn" id="heroSearchBtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search Jobs</span>
+            </button>
+          </form>
+
+          <!-- Popular Search Tags -->
+          <div class="popular-searches">
+            <span class="popular-label">Popular Searches:</span>
+            <div class="tag-chips" id="popularTagsContainer">
+              <button type="button" class="tag-chip" data-query="Remote">Remote</button>
+              <button type="button" class="tag-chip" data-query="Frontend">Frontend</button>
+              <button type="button" class="tag-chip" data-query="UI/UX Designer">UI/UX Designer</button>
+              <button type="button" class="tag-chip" data-query="Internship">Internship</button>
+              <button type="button" class="tag-chip" data-query="Python">Python</button>
+              <button type="button" class="tag-chip" data-query="Product Manager">Product Manager</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust Stats Bar -->
+        <div class="trust-stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">24,500+</span>
+            <span class="stat-label">Active Job Openings</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">1,200+</span>
+            <span class="stat-label">Vetted Companies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">98.5%</span>
+            <span class="stat-label">Placement Rate</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">$125k</span>
+            <span class="stat-label">Average Tech Salary</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POPULAR CATEGORIES SECTION ================= -->
+  <section class="categories-section" id="categoriesSection">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Explore by <span class="gradient-text">Top Categories</span></h2>
+        <p class="section-subtitle">Find jobs tailored to your specialization and industry</p>
+      </div>
+
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Dynamically or statically clickable category cards -->
+        <div class="category-card" data-category="Engineering">
+          <div class="category-icon icon-purple"><i class="fa-solid fa-code"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">Software &amp; Dev</h3>
+            <span class="category-count">120+ roles</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="Design">
+          <div class="category-icon icon-blue"><i class="fa-solid fa-pen-nib"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">UI/UX &amp; Design</h3>
+            <span class="category-count">48+ roles</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="Product">
+          <div class="category-icon icon-indigo"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">Product Management</h3>
+            <span class="category-count">36+ roles</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="Data & AI">
+          <div class="category-icon icon-cyan"><i class="fa-solid fa-brain"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">Data &amp; AI</h3>
+            <span class="category-count">55+ roles</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="Marketing">
+          <div class="category-icon icon-amber"><i class="fa-solid fa-bullhorn"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">Marketing &amp; Growth</h3>
+            <span class="category-count">29+ roles</span>
+          </div>
+        </div>
+        <div class="category-card" data-category="Finance">
+          <div class="category-icon icon-green"><i class="fa-solid fa-wallet"></i></div>
+          <div class="category-info">
+            <h3 class="category-name">Finance &amp; Ops</h3>
+            <span class="category-count">22+ roles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN JOB LISTINGS & FILTERS SECTION ================= -->
+  <main class="main-content-section" id="jobsingsSection">
+    <div class="container main-layout">
+
+      <!-- ================= SIDEBAR FILTERS ================= -->
+      <aside class="filters-sidebar" id="filtersSidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title-wrap">
+            <i class="fa-solid fa-sliders"></i>
+            <h3>Filter Jobs</h3>
+          </div>
+          <button type="button" class="clear-filters-btn" id="clearFiltersBtn" title="Reset all filters">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+          </button>
+        </div>
+
+        <div class="sidebar-filters-content">
+          <!-- Live Keyword Filter in Sidebar -->
+          <div class="filter-group">
+            <label for="sidebarKeywordInput" class="filter-label">Keywords or Company</label>
+            <div class="filter-input-wrap">
+              <i class="fa-solid fa-search"></i>
+              <input 
+                type="text" 
+                id="sidebarKeywordInput" 
+                placeholder="e.g. React, Google, Lead..."
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <label for="sidebarCategorySelect" class="filter-label">Job Category</label>
+            <div class="filter-select-wrap">
+              <select id="sidebarCategorySelect">
+                <option value="All">All Categories</option>
+                <option value="Engineering">Engineering &amp; Dev</option>
+                <option value="Design">UI/UX &amp; Design</option>
+                <option value="Product">Product Management</option>
+                <option value="Marketing">Marketing &amp; Sales</option>
+                <option value="Data & AI">Data &amp; Artificial Intelligence</option>
+                <option value="Finance">Finance &amp; Operations</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+          </div>
+
+          <!-- Location Filter -->
+          <div class="filter-group">
+            <label for="sidebarLocationSelect" class="filter-label">Location</label>
+            <div class="filter-select-wrap">
+              <select id="sidebarLocationSelect">
+                <option value="All">All Locations</option>
+                <option value="Remote">Remote Only</option>
+                <option value="San Francisco, CA">San Francisco, CA</option>
+                <option value="New York, NY">New York, NY</option>
+                <option value="Austin, TX">Austin, TX</option>
+                <option value="Seattle, WA">Seattle, WA</option>
+                <option value="London, UK">London, UK</option>
+                <option value="Berlin, Germany">Berlin, Germany</option>
+                <option value="Bangalore, India">Bangalore, India</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+          </div>
+
+          <!-- Job Type Filter (Checkboxes) -->
+          <div class="filter-group">
+            <span class="filter-label">Job Type</span>
+            <div class="checkbox-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="jobType" value="Full-time" id="typeFullTime">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Full-time</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="jobType" value="Part-time" id="typePartTime">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Part-time</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="jobType" value="Internship" id="typeInternship">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Internship</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="jobType" value="Remote" id="typeRemote">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Remote</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="jobType" value="Contract" id="typeContract">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Contract</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Experience Level Filter (Checkboxes) -->
+          <div class="filter-group">
+            <span class="filter-label">Experience Level</span>
+            <div class="checkbox-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="expLevel" value="Entry Level" id="expEntry">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Entry Level (0-2 yrs)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="expLevel" value="Mid Level" id="expMid">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Mid Level (3-5 yrs)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="expLevel" value="Senior Level" id="expSenior">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Senior Level (5+ yrs)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="expLevel" value="Lead / Executive" id="expLead">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">Lead / Executive</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Minimum Salary Slider -->
+          <div class="filter-group">
+            <div class="range-header">
+              <span class="filter-label">Min Salary / Year</span>
+              <span class="range-val" id="salaryDisplay">$0k+</span>
+            </div>
+            <input 
+              type="range" 
+              id="salaryRangeInput" 
+              min="0" 
+              max="200" 
+              step="10" 
+              value="0" 
+              class="range-slider"
+            >
+            <div class="range-scale">
+              <span>$0</span>
+              <span>$100k</span>
+              <span>$200k+</span>
+            </div>
+          </div>
+
+          <!-- Mobile Close Filter Drawer Button -->
+          <div class="mobile-filter-close-wrap">
+            <button type="button" class="btn btn-primary btn-block" id="applyMobileFiltersBtn">
+              Show Results
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================= LISTING RESULTS AREA ================= -->
+      <section class="listings-container" aria-label="Job Listings">
+        
+        <!-- Controls & Meta Bar -->
+        <div class="listings-meta-bar">
+          <div class="results-info">
+            <h2 class="results-heading" id="resultsCountText">Showing 16 Jobs</h2>
+            <p class="results-subtext">Vetted opportunities matching your preferred criteria</p>
+          </div>
+
+          <div class="listings-controls">
+            <!-- Mobile Filters Toggle Button -->
+            <button type="button" class="mobile-filter-btn" id="mobileFilterToggleBtn">
+              <i class="fa-solid fa-sliders"></i>
+              <span>Filters</span>
+              <span class="filter-count-badge" id="activeFilterBadge">0</span>
+            </button>
+
+            <!-- View Switcher (All vs Saved) -->
+            <div class="view-toggle-pills" role="tablist">
+              <button type="button" class="view-pill active" id="viewAllJobsBtn" role="tab" aria-selected="true">
+                <i class="fa-solid fa-list"></i> All Jobs
+              </button>
+              <button type="button" class="view-pill" id="viewSavedJobsBtn" role="tab" aria-selected="false">
+                <i class="fa-solid fa-bookmark"></i> Saved (<span id="savedTabCount">0</span>)
+              </button>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="sort-dropdown-wrap">
+              <label for="sortBySelect" class="sr-only">Sort Jobs</label>
+              <i class="fa-solid fa-arrow-down-short-wide sort-icon"></i>
+              <select id="sortBySelect" aria-label="Sort Jobs By">
+                <option value="newest">Sort: Newest First</option>
+                <option value="salaryHigh">Salary: High to Low</option>
+                <option value="salaryLow">Salary: Low to High</option>
+                <option value="alphabetical">Company: A to Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Badges Bar -->
+        <div class="active-filters-bar" id="activeFiltersBar" style="display: none;">
+          <span class="active-filters-title">Active Filters:</span>
+          <div class="active-chips-wrap" id="activeChipsWrap"></div>
+          <button type="button" class="clear-all-link" id="clearChipsBtn">Clear all</button>
+        </div>
+
+        <!-- Job Cards Grid/List Container -->
+        <div class="job-cards-list" id="jobCardsContainer">
+          <!-- Injected dynamically via script.js -->
+        </div>
+
+        <!-- Empty State (Hidden by default) -->
+        <div class="empty-state-card" id="emptyStateContainer" style="display: none;">
+          <div class="empty-icon-circle">
+            <i class="fa-solid fa-magnifying-glass-location"></i>
+          </div>
+          <h3 class="empty-title">No Matching Jobs Found</h3>
+          <p class="empty-desc">
+            We couldn't find any opportunities matching your selected keywords and filters. Try widening your criteria or clearing filters to see all available roles.
+          </p>
+          <button type="button" class="btn btn-primary" id="emptyResetBtn">
+            <i class="fa-solid fa-rotate-left"></i> Reset All Filters
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= HOW IT WORKS SECTION ================= -->
+  <section class="how-it-works-section" id="howItWorks">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">How <span class="gradient-text">SpireJobs</span> Works</h2>
+        <p class="section-subtitle">Get hired in three straightforward, transparent steps</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fa-solid fa-compass"></i></div>
+          <h3 class="step-heading">Discover Roles</h3>
+          <p class="step-description">
+            Search our curated database of verified opportunities by skill, category, location, and salary expectations.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fa-solid fa-bookmark"></i></div>
+          <h3 class="step-heading">Save &amp; Compare</h3>
+          <p class="step-description">
+            Bookmark interesting positions to your saved list with persistent storage. Review requirements at your own pace.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <h3 class="step-heading">Apply Instantly</h3>
+          <p class="step-description">
+            Submit your profile directly through our seamless one-click application modal and track your submission status.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-col brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <div class="logo-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <span class="logo-text">Spire<span class="logo-accent">Jobs</span></span>
+          </a>
+          <p class="footer-bio">
+            A modern, user-friendly career portal connecting ambitious talent with top global opportunities.
+          </p>
+          <div class="project-pill">
+            <i class="fa-solid fa-award"></i> SpireX Foundation Internship &bull; Task 15
+          </div>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Job Seekers</h4>
+          <ul class="footer-links">
+            <li><a href="#jobsingsSection">Browse All Jobs</a></li>
+            <li><a href="#categoriesSection">Explore Categories</a></li>
+            <li><a href="#" id="footerSavedLink">Saved Jobs</a></li>
+            <li><a href="#howItWorks">Application Process</a></li>
+            <li><a href="#">Career Advice</a></li>
+          </ul>
+        </div>
+
+        <!-- Job Categories -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Top Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-cat-link" data-cat="Engineering">Software Engineering</a></li>
+            <li><a href="#" class="footer-cat-link" data-cat="Design">UI/UX &amp; Product Design</a></li>
+            <li><a href="#" class="footer-cat-link" data-cat="Data & AI">Machine Learning &amp; AI</a></li>
+            <li><a href="#" class="footer-cat-link" data-cat="Product">Product Management</a></li>
+            <li><a href="#" class="footer-cat-link" data-cat="Marketing">Growth Marketing</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Subscription Mock -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Job Alerts</h4>
+          <p class="footer-text">Get new job postings delivered straight to your inbox weekly.</p>
+          <form class="newsletter-form" id="newsletterForm" onsubmit="return false;">
+            <div class="newsletter-input-wrap">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+              <button type="submit" class="btn btn-primary" aria-label="Subscribe to alerts">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+          <span class="newsletter-note"><i class="fa-solid fa-shield-halved"></i> No spam. Unsubscribe anytime.</span>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 SpireJobs &bull; SpireX Foundation Internship Task 15. All rights reserved.</p>
+        <p class="footer-built-with">
+          Built with <span class="heart-icon">&hearts;</span> using HTML5, CSS3 &amp; Vanilla JavaScript.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= VIEW DETAILS MODAL ================= -->
+  <div class="modal-overlay" id="detailsModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalJobTitle">
+    <div class="modal-card modal-lg">
+      <button type="button" class="modal-close-btn" id="closeDetailsModalBtn" aria-label="Close Job Details">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header" id="detailsModalHeader">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="modal-body" id="detailsModalBody">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="modal-footer" id="detailsModalFooter">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= APPLY NOW MODAL ================= -->
+  <div class="modal-overlay" id="applyModalOverlay" role="dialog" aria-modal="true" aria-labelledby="applyModalTitle">
+    <div class="modal-card modal-md">
+      <button type="button" class="modal-close-btn" id="closeApplyModalBtn" aria-label="Close Application Form">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Application Form View -->
+      <div id="applyFormContent">
+        <div class="apply-modal-header">
+          <div class="apply-modal-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <div>
+            <h3 class="modal-title" id="applyModalTitle">Submit Application</h3>
+            <p class="modal-subtitle" id="applyModalSubtitle">Applying for Senior Frontend Engineer at TechCorp</p>
+          </div>
+        </div>
+
+        <form class="apply-form" id="jobApplicationForm" novalidate>
+          <input type="hidden" id="applyJobId">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="applicantName" class="form-label">Full Name <span class="required">*</span></label>
+              <input type="text" id="applicantName" class="form-input" placeholder="e.g. Alex Johnson" required>
+              <span class="field-error" id="nameError">Please enter your full name.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="applicantEmail" class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" id="applicantEmail" class="form-input" placeholder="alex@example.com" required>
+              <span class="field-error" id="emailError">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="applicantPhone" class="form-label">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="applicantPhone" class="form-input" placeholder="+1 (555) 000-1234" required>
+              <span class="field-error" id="phoneError">Please enter your contact number.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="applicantExp" class="form-label">Experience <span class="required">*</span></label>
+              <select id="applicantExp" class="form-input" required>
+                <option value="">Select experience</option>
+                <option value="0-1">Less than 1 year (Fresher / Intern)</option>
+                <option value="1-3">1 - 3 years</option>
+                <option value="3-5">3 - 5 years</option>
+                <option value="5-8">5 - 8 years</option>
+                <option value="8+">8+ years</option>
+              </select>
+              <span class="field-error" id="expError">Please select your experience level.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="applicantPortfolio" class="form-label">Portfolio / LinkedIn / GitHub URL</label>
+            <input type="url" id="applicantPortfolio" class="form-input" placeholder="https://linkedin.com/in/username">
+          </div>
+
+          <!-- Mock Resume Upload -->
+          <div class="form-group">
+            <label class="form-label">Resume / CV (PDF, DOCX) <span class="required">*</span></label>
+            <div class="file-drop-zone" id="fileDropZone">
+              <i class="fa-solid fa-cloud-arrow-up file-drop-icon"></i>
+              <span class="file-drop-text" id="fileDropText">Click to select or drag and drop your resume</span>
+              <span class="file-drop-hint">Supported formats: PDF, DOCX (Max 5MB)</span>
+              <input type="file" id="applicantResume" class="file-input-hidden" accept=".pdf,.doc,.docx" required>
+            </div>
+            <span class="field-error" id="resumeError">Please attach your resume file.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="applicantNote" class="form-label">Cover Letter / Note to Recruiter</label>
+            <textarea id="applicantNote" class="form-input form-textarea" rows="3" placeholder="Briefly introduce yourself and why you're a great fit for this position..."></textarea>
+          </div>
+
+          <div class="apply-modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelApplyBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submitApplicationBtn">
+              <span class="btn-text">Submit Application</span>
+              <span class="btn-spinner" style="display: none;"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Application Success State -->
+      <div class="apply-success-view" id="applySuccessView" style="display: none;">
+        <div class="success-icon-wrap">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 class="success-title">Application Submitted!</h3>
+        <p class="success-message">
+          Your application for <strong id="successJobRole">Software Engineer</strong> has been submitted to <strong id="successCompany">Company</strong>.
+        </p>
+        <p class="success-sub">
+          A confirmation receipt has been simulated to your email. You can view all applied roles directly on your job portal board.
+        </p>
+        <button type="button" class="btn btn-primary" id="successDoneBtn">Done</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= POST A JOB DEMO MODAL ================= -->
+  <div class="modal-overlay" id="postJobModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-card modal-md">
+      <button type="button" class="modal-close-btn" id="closePostJobModalBtn" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="demo-modal-body text-center">
+        <div class="demo-modal-icon">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3 class="modal-title">Employer Portal</h3>
+        <p class="modal-subtitle">
+          SpireJobs employer dashboard enables hiring teams to post positions, review candidate resumes, and manage interview pipelines.
+        </p>
+        <div class="demo-info-box">
+          <p><strong>Note for SpireX Foundation Evaluators:</strong></p>
+          <p>This demo interface highlights employer integration. You can test all job search, filtering, bookmarking, and application workflows directly as a candidate!</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="postJobOkBtn">Explore Available Jobs</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION SYSTEM ================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- JavaScript Script -->
+  <script src="script.js"></script>
+</body>
+</html>
